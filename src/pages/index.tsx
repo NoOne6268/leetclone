@@ -1,8 +1,6 @@
 import ProblemsTable from "@/components/problems_table";
 import Topbar from "@/components/topbar";
-import { firestore } from "@/firebase";
 import useHasMounted from "@/hooks/useHasMounted";
-import { doc, setDoc } from "firebase/firestore";
 import React, { useState } from "react";
 
 export default function Home() {
