@@ -6,17 +6,35 @@ export type Example = {
 	img?: string;
 };
 
-// local problem data
+
 export type Problem = {
-	id: string;
-	title: string;
-	problemStatement: string;
-	examples: Example[];
-	constraints: string;
-	order: number;
-	starterCode: string;
-	handlerFunction: ((fn: any) => boolean) | string;
-	starterFunctionName: string;
+  id: string;
+  title: string;
+  problemStatement: string;
+  order: number;
+  examples: Example[];
+  constraints: string[];
+  testCases: Array<{
+    input: any;
+    expectedOutput: any;
+  }>;
+  starterCode: {
+    [key: string]: string;
+  };
+  equivalenceCode: EquivalenceCode;
+  functionSignatures: {
+    [key: string]: string;
+  };
+};
+
+export type EquivalenceCode = {
+  type: 'none' | 'array' | 'set' | 'numeric' | 'custom';
+    tolerance?: number; // For numeric comparisons
+    customChecker?: {
+      code: string;
+      language: string;
+      judge0Id: number;
+  };
 };
 
 export type DBProblem = {

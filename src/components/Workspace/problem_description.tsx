@@ -9,6 +9,7 @@ import { TiStarOutline } from "react-icons/ti";
 import { toast } from "react-toastify";
 import CircleSkeleton from "../Skeletons/CircleSkeleton";
 import RectangleSkeleton from "../Skeletons/RectangleSkeleton";
+import Image from "next/image";
 
 type ProblemDescriptionProps = {
 	problem: Problem,
@@ -225,7 +226,16 @@ export default function ProblemDescription({ problem, _solved }: ProblemDescript
 						<div className='mt-4'>
 							{problem.examples.map((example, index) => (
 								 <div key={example.id}> 
-									<p className='font-medium text-white '>Example {index + 1}: </p>
+									{example.img && (
+										<Image
+											src={example.img}
+											alt=''
+											className='mt-3'
+											width={500}
+											height={300}
+											style={{ maxWidth: "100%", height: "auto" }}
+										/>
+									)}
 									{example.img && <img src={example.img} alt='' className='mt-3' />}
 									<div className='example-card'>
 										<pre>
